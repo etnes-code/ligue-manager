@@ -1,0 +1,20 @@
+@if (darkMode()) {
+  <button
+    (click)="darkMode.set(!darkMode())"
+    appearance="secondary-destructive"
+    iconStart="@tui.moon"
+    size="xs"
+    tuiIconButton
+    type="button"
+    [style.border-radius.%]="100">Dark mode</button>
+}
+@if (!darkMode()) {
+  <button
+    (click)="reset()"
+    appearance="secondary-destructive"
+    iconStart="@tui.sun"
+    size="xs"
+    tuiIconButton
+    type="button"
+    [style.border-radius.%]="100">Light mode</button>
+}
