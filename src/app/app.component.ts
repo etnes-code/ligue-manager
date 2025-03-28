@@ -1,15 +1,16 @@
-import { Component, HostBinding } from '@angular/core';
-import { environment } from '@environment/environment';
+import { Component, inject } from '@angular/core';
 import { LayoutComponent } from './shared/components/layout/layout.component';
+import { TUI_DARK_MODE, TuiRoot } from '@taiga-ui/core';
+import { TUI_IS_MOBILE } from '@taiga-ui/cdk';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [LayoutComponent],
+  imports: [LayoutComponent, TuiRoot],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'Quick-start-angular-template';
-  @HostBinding('attr.app-version') appVersionAttr = environment.appVersion;
+  protected readonly darkMode = inject(TUI_DARK_MODE);
+  protected readonly isMobile = inject(TUI_IS_MOBILE);
 }

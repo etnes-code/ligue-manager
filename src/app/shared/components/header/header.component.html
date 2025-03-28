@@ -1,1 +1,21 @@
-<p>header works!</p>
+<header tuiNavigationHeader>
+  <div
+    tuiGroup
+    [collapsed]="true"
+    [style.width]="'50%'"
+    [style.margin]="'auto'">
+    <label appearance="" tuiBlock="m">
+      <input tuiBlock="m" type="radio" value="basic" />
+      Classement
+    </label>
+    <label appearance="" tuiBlock="m">
+      <input tuiBlock="m" type="radio" value="input" />
+      Résumé des matches
+    </label>
+    <label appearance="" tuiBlock="m">
+      <input tuiBlock="m" type="radio" value="card" />
+      Règlement
+    </label>
+  </div>
+  <app-dark-mode></app-dark-mode>
+</header>
