@@ -27,7 +27,7 @@
     "@taiga-ui/cdk": "^4.30.0",
     "@taiga-ui/core": "^4.31.0",
     "@taiga-ui/event-plugins": "^4.0.2",
-    "@taiga-ui/icons": "^4.30.0",
+    "@taiga-ui/icons": "^4.31.0",
     "@taiga-ui/kit": "^4.30.0",
     "@taiga-ui/layout": "^4.30.0",
     "express": "^4.21.2",
