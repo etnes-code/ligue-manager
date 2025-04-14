@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.interface';
+import { User } from '@app/features/users/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class LoginService {
   login(username: string, password: string): Observable<User> {
     console.log('Simulating login request...');
     return new Observable(observer => {
