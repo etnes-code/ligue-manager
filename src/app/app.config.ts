@@ -6,15 +6,20 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {
   provideHttpClient,
+  withInterceptors,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { metaDataInterceptor } from './features/metadata/meta-data.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(
+      withInterceptorsFromDi(),
+      withInterceptors([metaDataInterceptor])
+    ),
     NG_EVENT_PLUGINS,
   ],
 };
