@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 
 import { metaDataInterceptor } from './meta-data.interceptor';
-import { HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpRequest, HttpEvent } from '@angular/common/http';
 import { of } from 'rxjs';
 import { LocalStorageService } from '@app/shared/services/local-storage.service';
 
@@ -14,24 +14,10 @@ describe('metaDataInterceptor', () => {
   const interceptor: HttpInterceptorFn = (req, next) =>
     TestBed.runInInjectionContext(() => metaDataInterceptor(req, next));
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-  });
-
-  it('should be created', () => {
-    expect(interceptor).toBeTruthy();
-  });
-});
-describe('metaDataInterceptor', () => {
-  const interceptor: HttpInterceptorFn = (req, next) =>
-    TestBed.runInInjectionContext(() => metaDataInterceptor(req, next));
-
   let localStorageService: jasmine.SpyObj<LocalStorageService>;
-  //let mockNext: jasmine.SpyObj<HttpHandler>;
 
   beforeEach(() => {
     localStorageService = jasmine.createSpyObj('LocalStorageService', ['get']);
-   // mockNext = jasmine.createSpyObj('HttpHandler', ['handle']);
 
     TestBed.configureTestingModule({
       providers: [
@@ -45,7 +31,7 @@ describe('metaDataInterceptor', () => {
     localStorageService.get.and.returnValue(token);
 
     const mockRequest = new HttpRequest('GET', '/test');
-    const mockNext: HttpHandlerFn = req => of({} as HttpResponse<any>);
+    const mockNext: HttpHandlerFn = () => of({} as HttpResponse<unknown>);
 
     const result = interceptor(mockRequest, mockNext);
 
@@ -61,12 +47,12 @@ describe('metaDataInterceptor', () => {
     localStorageService.get.and.returnValue(null);
 
     const mockRequest = new HttpRequest('GET', '/test');
-    const mockNext: HttpHandlerFn = req => of({} as HttpEvent<any>);
+    const mockNext: HttpHandlerFn = () => of({} as HttpEvent<unknown>);
 
     const result = interceptor(mockRequest, mockNext);
 
     expect(localStorageService.get).toHaveBeenCalledWith('token');
-    result.subscribe(res => {
+    result.subscribe(() => {
       expect(mockRequest.headers.get('Authorization')).toBeNull();
     });
   });
