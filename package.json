@@ -21,7 +21,7 @@
     "@angular/core": "^19.2.3",
     "@angular/forms": "^19.2.3",
     "@angular/platform-browser": "^19.2.3",
-    "@angular/platform-browser-dynamic": "^19.2.3",
+    "@angular/platform-browser-dynamic": "^19.2.8",
     "@angular/router": "^19.2.3",
     "@taiga-ui/addon-table": "^4.30.0",
     "@taiga-ui/cdk": "^4.30.0",
